@@ -1,54 +1,109 @@
-# React + TypeScript + Vite
+# URL Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern React + TypeScript application, bootstrapped with Vite, demonstrating state management and UI theming using URL state and context providers. It is configured with robust linting and leverages React Router, React Query, and a collection of reusable UI components.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **URL State Management**: Utilizes browser URLs to manage and persist application state (e.g., filters, pagination).
+- **Theming**: Light, dark, and system theme support with persistent user preference (stored in local storage).
+- **Product Filtering**: Example product list with category, price, and tag filters, supporting server-like pagination.
+- **Modern React Stack**:
+  - React 18 with functional components and hooks
+  - TypeScript for static typing and safer code
+  - Vite for lightning-fast development
+  - React Router for SPA navigation
+  - TanStack Query for efficient server state management
+  - Tailwind CSS for utility-first styling and custom themes
+- **Reusable UI Components**: Dropdown menus, buttons, theming toggles, and more.
+- **Mock Data**: Demonstrates filtering and pagination logic using a local mock product dataset.
+- **Strong Linting & Formatting**: ESLint with TypeScript, React hooks, and Prettier integration.
 
-## Expanding the ESLint configuration
+## Directory Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+UrlManagment/
+│
+├── public/               # Static assets
+├── src/
+│   ├── components/
+│   │   ├── themeProvider.tsx      # Context and logic for app theming
+│   │   ├── themeToggle.tsx        # Theme toggle dropdown component
+│   │   └── ui/
+│   │       └── dropdown-menu.tsx  # Custom dropdown menu primitives
+│   ├── lib/
+│   │   ├── fetchProducts.ts       # Filtering and paginating mock products
+│   │   └── utils.ts               # Utility functions (e.g., className merging)
+│   ├── mock/
+│   │   └── products.ts            # Array of mock product data
+│   ├── main.tsx                   # App entry point, context & router setup
+│   └── vite-env.d.ts              # Vite type declarations
+├── index.html
+├── vite.config.ts                 # Vite and plugin configuration
+├── eslint.config.js               # ESLint configuration (TypeScript & React)
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Node.js (v18+ recommended)
+- npm (v9+) or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Mustafaguzel2/UrlManagment.git
+   cd UrlManagment
+   ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **View in browser:**  
+   Open [http://localhost:5173](http://localhost:5173)
+
+## Usage
+
+- Navigate through the app to see product listings and filtering in action.
+- Use the theme toggle (top-right) to switch between light, dark, and system modes. The preference is saved locally.
+- URL parameters reflect filter/sort states for easy sharing or bookmarking.
+
+## Configuration
+
+- **Vite** is configured in `vite.config.ts` for React, Tailwind CSS, and path aliases (`@` to `/src`).
+- **Linting**: ESLint is set up for TypeScript and React best practices.
+- **Mock Data**: `src/mock/products.ts` can be extended or replaced with actual API calls.
+- **Theming**: Customize themes via Tailwind or the `themeProvider.tsx`.
+
+## Extending
+
+- Add real API integration by replacing the logic in `src/lib/fetchProducts.ts`.
+- Expand the UI with more components in `src/components/ui/`.
+- Configure stricter or custom linting rules in `eslint.config.js`.
+
+## Scripts
+
+- `npm run dev` – Start development server
+- `npm run build` – Build for production
+- `npm run preview` – Preview production build
+- `npm run lint` – Run ESLint
+
+## License
+
+[MIT](LICENSE) (update if different)
+
+---
+
+**Made with ❤️ using React, TypeScript, and Vite.**
